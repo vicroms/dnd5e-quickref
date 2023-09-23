@@ -44,9 +44,13 @@ function show_modal(data, color, type) {
     $("#modal-bullets").html(bullets_html);
 }
 
-function hide_modal() {
-    $("body").removeClass("modal-open");
-    $("#modal").removeClass("modal-visible");
+function hide_modal(e) {
+    // allows clicking elements within the modal without closing it
+    if (!$.contains($('#modal-container').parent()[0], e.target))
+    {
+        $("body").removeClass("modal-open");
+        $("#modal").removeClass("modal-visible");
+    }
 }
 
 function fill_section(data, parentname, type) {
